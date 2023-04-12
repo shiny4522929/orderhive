@@ -1,8 +1,13 @@
 <p> Hello Users</p>
+<% if can? :create, :admin %>
+
+  <% end %>
+
  <% if user_signed_in? %> 
  <div> Welcome <%= current_user.email %> </div> 
+ <%= link_to 'Edit registration', edit_user_registration_path %>
   <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
 <% else %>
- 
+ <%= link_to 'Register', new_user_registration_path  %>
   <%= button_to "Sign in", new_user_session_path %> 
 <% end %>

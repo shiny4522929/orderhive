@@ -21,9 +21,17 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+   <div class="field">
+    <%= f.label :Role %>
+      <br/>
+    <%#= f.select :role, ["buyer", "Seller", "Admin"] %>
+    <%= f.select :role, User.roles.keys %>
+  </div> <br/>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

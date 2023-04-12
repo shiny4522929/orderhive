@@ -1,20 +1,19 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
   def create
-    super { |resource| BackgroundWorker.trigger(resource) }
+    user = User.create!(configure_sign_up_params)
+    render json: user, status: :created
+    super
   end
 
   # GET /resource/edit
@@ -23,9 +22,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    user = User.find(params[:id])
+    user.update!(configure_account_update_params)
+    render json: user
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -40,18 +42,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  # def after_sign_up_path_for(resource)
+  #   if current_user.role == "admin"
+  #     avo_path
+  # else
+  #   root_path
+  # end
   # end
 
+  private
+
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, :role)
+  end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, :role)
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
