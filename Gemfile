@@ -46,6 +46,7 @@ gem "devise"
 gem "avo"
 gem "letter_opener"
 gem 'cancancan' 
+gem 'bootstrap'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -75,3 +76,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "cssbundling-rails", "~> 1.1"
