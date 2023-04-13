@@ -1,0 +1,31 @@
+
+<h1>Locations</h1>
+
+<table>
+  <tr>
+  <th>name_of_location</th>
+  <th>address</th>
+  <th>location_identification_code</th>
+  <th>postal</th>
+  <th>code</th>
+  <th>state</th>
+  <th>country</th>
+  <th>user_id</th>
+  </tr>
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.name_of_location %></td>
+      <td><%= location.address %></td>
+      <td><%= location.location_identification_code %></td>
+      <td><%= location.code %></td>
+      <td><%= location.state %></td>
+      <td><%= location.country %></td>
+      <td><%= location.user_id %></td>
+      <td><%= link_to "show", location %></td>
+      </tr>
+    
+  <% end %>
+</table>
+<%= link_to "new location", new_location_path, method: :post %>
+
+
