@@ -15,7 +15,6 @@ class User < ApplicationRecord
          :confirmable
 
   private
-
   def set_default_role
     self.role ||= :buyer
   end
