@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   # authenticate :user, lambda { |u| u.role == "admin" } do
   # mount Avo::Engine => "/admin", :as => "avo"
   devise_for :users, controllers: { sessions: "users/sessions" }
-
   # devise_for :users,
   #            controllers: {
   #              registrations: "users/registrations",
@@ -11,4 +10,6 @@ Rails.application.routes.draw do
   #              sessions: "users/sessions"
   #            }
   root "homes#index"
+
+  resources :locations
 end
