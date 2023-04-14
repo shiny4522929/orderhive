@@ -10,6 +10,5 @@ Rails.application.routes.draw do
   #              sessions: "users/sessions"
   #            }
   root "homes#index"
-
   resources :locations
 end
