@@ -1,0 +1,13 @@
+<p><%= @location.name_of_location %></p>
+<p><%= @location.address %></p>
+<p><%= @location.location_identification_code %></p>
+<p><%= @location.code %></p>
+<p><%= @location.state %></p>
+<p><%= @location.country %></p>
+<p><%= @location.user_id %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_location_path(@location) %></li>  
+ <li><%= button_to "Destroy", @location, method: :delete %></li>
+</ul>
+
