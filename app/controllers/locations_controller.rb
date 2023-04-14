@@ -1,11 +1,11 @@
 class LocationsController < ApplicationController
+  before_action :set_location, only: %i[ show edit update destroy ]
+
   def index
     @locations = Location.all
   end
 
   def show
-    debugger
-    @location = Location.find(params[:id])
   end
   
   def new
@@ -14,7 +14,6 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    debugger
     if @location.save
 
       redirect_to locations_path
@@ -24,16 +23,17 @@ class LocationsController < ApplicationController
   end
 
   def edit
-    @location = Location.find(params[:id])
+  end
+
+  def update
     if @location.update(location_params)
-      redirect_to @locations
+      redirect_to locations_path
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @location = Location.find(params[:id])
     @location.destroy
 
     redirect_to locations_path(@locations)
@@ -44,4 +44,7 @@ class LocationsController < ApplicationController
     params.require(:location).permit(:name_of_location, :address, :location_identification_code, :postal, :code, :state, :country, :user_id)
   end
 
+  def set_location
+    @location = Location.find(params[:id])
+  end
 end
