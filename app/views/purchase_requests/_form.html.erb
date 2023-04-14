@@ -1,0 +1,29 @@
+<%= form_with model: [ @purchase_requests, @purchase_requests.comments.build ] do |form| %>
+  <p>
+    <%= form.label :delivery_date %><br>
+    <%= form.text_field :delivery_date %>
+  </p>
+  <p>
+    <%= form.label :user_id %><br>
+    <%= form.text_area :user_id %>
+  </p>
+  <p>
+    <%= form.label :requisition_amount %><br>
+    <%= form.text_area :requisition_amount %>
+  </p>
+  <p>
+    <%= form.label :pr_creation_date %><br>
+    <%= form.text_area :pr_creation_date %>
+  </p>
+  <p>
+    <%= form.label :status %><br>
+    <%= form.text_area :status %>
+  </p>
+  <p>
+    <%= form.label :approved %><br>
+    <%= form.text_area :approved %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
