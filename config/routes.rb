@@ -7,10 +7,15 @@ Rails.application.routes.draw do
                controllers: {
                registrations: "users/registrations",
                   confirmations: "users/confirmations",
-                 sessions: "users/sessions"
-     }
-  
+                 sessions: "users/sessions"            
+    }
+        devise_scope :user do  
+         get '/users/sign_out' => 'users/sessions#destroy'     
+         post '/users/sign_up', to: 'users/registrations#create'
+        end
+         
   root "homes#index"
   resources :locations
   resources :purchase_requests
 end
+

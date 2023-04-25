@@ -47,6 +47,9 @@ gem "avo"
 gem "letter_opener"
 gem 'cancancan' 
 gem 'bootstrap'
+gem "font-awesome-rails"
+gem 'jquery-rails'
+gem "byebug"
 
 # Use Sass to process CSS
 # gem "sassc-rails"

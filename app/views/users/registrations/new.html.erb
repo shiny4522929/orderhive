@@ -1,29 +1,74 @@
-<h2>Sign up</h2>
+<div class="wrapper">
+        <div class="form-left">
+            <h2 class="text-uppercase">information</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et molestie ac feugiat sed. Diam volutpat commodo.
+            </p>
+            <p class="text">
+                <span>Sub Head:</span>
+                Vitae auctor eu augudsf ut. Malesuada nunc vel risus commodo viverra. Praesent elementum facilisis leo vel.
+            </p>
+            <div class="form-field">
+                <input type="submit" class="account" value="Have an Account?">
+            </div>
+        </div>
+       
+       <%= form_for(@user, as: @user, url: new_user_registration_path(@user)) do |f| %>
+      
+            <h2 class="text-uppercase">Registration form</h2>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, class: "input-field" %>
+                </div><br/>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+                <div class="col-sm-6 mb-3">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, class: "input-field" %>
+                </div>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+            <div class="row">
+                  <div class="col-sm-6 mb-3">
+                    <%= f.label :email, "Email Address" %>
+                    <%= f.email_field :email, class:"input-field" %>
+                </div>
+                <div class="col-sm-6 mb-3">
+                  <%= f.label :password %>
+                  <%= f.password_field :password, class: "input-field"  %>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <%= f.label :password, "Confirm Password" %>
+                    <%= f.password_field :password, class: "input-field" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+                <div class="col-sm-6 mb-3">
+                    <%= f.label :phone_number, "Phone Number" %>
+                    <%= f.text_field :phone_number, class: "input-field" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+                <div class="col-sm-6 mb-3">
+                    <%= f.label :department_id, "Department Id" %>
+                    <%= f.text_field :department_id, class: "input-field" %>
+                </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+                <div class="col-sm-6 mb-3">
+                     <%= f.label :Role, "Roles" %><br/>
+                     <%= f.select :role, User.roles.keys, class: "input-field" %>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="option">I agree to the <a href="#">Terms and Conditions</a>
+                    <input type="checkbox" checked>
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div class="form-field">
+             <%= f.submit "Create account", class: "register" %>
+            </div>
+        </form>
+        <% end %>
+    </div>
+    <%= render "users/shared/links" %>
+    
+     
