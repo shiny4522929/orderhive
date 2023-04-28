@@ -10,12 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_13_080345) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_20_114339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.string "name"
+    t.integer "phone"
+    t.string "twitter"
+    t.string "email"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name_of_location"
+    t.string "address"
+    t.string "location_identification_code"
+    t.string "postal"
+    t.string "code"
+    t.string "state"
+    t.string "country"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchase_requests", force: :cascade do |t|
+    t.datetime "delivery_date"
+    t.integer "user_id"
+    t.float "requisition_amount"
+    t.datetime "pr_creation_date"
+    t.string "status"
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -45,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_13_080345) do
     t.integer "department_id"
     t.string "first_name"
     t.string "last_name"
-    t.integer "full_phone_number"
-    t.integer "phone_number"
+    t.string "full_phone_number"
+    t.string "phone_number"
     t.string "user_name"
     t.string "organization"
     t.string "country_code"
