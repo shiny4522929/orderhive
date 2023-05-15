@@ -1,20 +1,20 @@
 
+<table class="table table-striped table-hover">
+  <tr>
+    <th>delivery_date</th>
+    <th>user_id</th>
+    <th>requisition_amount</th>
+    <th>pr_creation_date</th>
+    <th>status</th>
+  </tr>
+<tr>
+  <td><%= @purchase_request&.delivery_date %></td>
+  <td><%= @purchase_request&.user_id %></td>
+  <td><%= @purchase_request&.requisition_amount %></td>
+  <td><%= @purchase_request&.pr_creation_date %></td>
+  <td><%= @purchase_request&.status %></td>
+</tr>
+</table>
+<td><%= link_to "back", user_purchase_requests_path(current_user, @purchase_request) %></td>
 
-  <p><%= @purchase_request.delivery_date %></p>
-  <p><%= @purchase_request.user_id %></p>
-  <p><%= @purchase_request.requisition_amount %></p>
-  <p><%= @purchase_request.pr_creation_date %></p>
-  <p><%= @purchase_request.status %></p>
-  <p><%= @purchase_request.approved %></p>
 
-
-<ul>
-  <li><%= link_to "Edit", edit_purchase_request_path(@purchase_request) %></li>
-  <li><%= link_to "Destroy", purchase_request_path(@purchase_request), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
-
-
-  
