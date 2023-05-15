@@ -1,29 +1,37 @@
-<%= form_with model: [ @purchase_requests, @purchase_requests.comments.build ] do |form| %>
-  <p>
-    <%= form.label :delivery_date %><br>
-    <%= form.text_field :delivery_date %>
-  </p>
-  <p>
-    <%= form.label :user_id %><br>
-    <%= form.text_area :user_id %>
-  </p>
-  <p>
-    <%= form.label :requisition_amount %><br>
-    <%= form.text_area :requisition_amount %>
-  </p>
-  <p>
-    <%= form.label :pr_creation_date %><br>
-    <%= form.text_area :pr_creation_date %>
-  </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.text_area :status %>
-  </p>
-  <p>
-    <%= form.label :approved %><br>
-    <%= form.text_area :approved %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+<%= form_with(model: [current_user, @purchase_request]) do |form| %>
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px; margin-top: 15px; margin-bottom: 15px;">
+            <div class="card-body p-5">
+              <h2 >Create Purchase Request</h2>
+                <div class="form-outline mb-4">
+                    <b><%= form.label :delivery_date %><br></b>
+                    <b><%= form.date_field :delivery_date, class: "form-control", placeholder: "Delivery date" %></b>
+                </div>
+                <div class="form-outline mb-4">
+                    <b><%= form.label :requisition_amount %><br>
+                    <b> <%= form.text_field  :requisition_amount, class: "form-control", placeholder: "Requisition_amount" %></b>
+                </div>
+                <div class="form-outline mb-4">
+                    <b> <%= form.label :pr_creation_date%><br>
+                    <b> <%= form.date_field  :pr_creation_date, class: "form-control", placeholder: "pr_creation_date" %></b>
+                </div>
+                <div class="form-outline mb-4">
+                    <b> <%= form.label :status %><br>
+                    <b> <%= form.text_field  :status, class: "form-control", placeholder: "Status" %></b>
+                </div> 
+                <div>
+                    <b><%= form.submit  class: "btn btn-primary"  %></b>
+                    <%= link_to "back", user_purchase_requests_path(current_user, @purchase_request),class: "btn btn-primary" %>
+                </div><br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %> 
+
+ 

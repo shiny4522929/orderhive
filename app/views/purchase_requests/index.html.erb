@@ -1,9 +1,100 @@
-<h1>PURCHASE_REQUSET</h1>
-<table>
-<tr>
-<td>user_id</td>
-</tr>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<body>
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+					</div>
+          <h2 style= "margin-top: 10px">Manage Purchase Request</h2> 
+          <%= form_with(model: [@current_user, PurchaseRequest.new], url: user_purchase_requests_path(current_user.id)) do |form| %>             
+          <button type="button"  class="btn btn-info btn lg" data-toggle="modal" data-target="#myModal" style= " margin-left: 1040px; margin-top: -45px; ">Create</button>
+        <div class="container">
+      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+  <div class="modal-content">
+<div class="modal-header">
+  <h4 class="modal-title">Create Rurchase Request</h4>
+</div>
+    <div class="modal-body">
+          <div class="form-outline mb-4">
+                <b><%= form.label :delivery_date %><br></b>
+                <b><%= form.date_field :delivery_date, class: "form-control", placeholder: "Delivery date" %></b>
+            </div>
+            <div class="form-outline mb-4">
+                <b><%= form.label :requisition_amount %><br>
+                <b> <%= form.text_field  :requisition_amount, class: "form-control", placeholder: "Requisition_amount" %></b>
+            </div>
+            <div class="form-outline mb-4">
+                <b> <%= form.label :pr_creation_date%><br>
+                <b> <%= form.date_field  :pr_creation_date, class: "form-control", placeholder: "pr_creation_date" %></b>
+            </div>
+            <div class="form-outline mb-4">
+                <b> <%= form.label :status %><br>
+                <b> <%= form.text_field  :status, class: "form-control", placeholder: "Status" %></b>
+            </div> 
+            <div class="modal-footer">
+              <b><%= form.submit class: "btn btn-primary"%></b>
+              <button class= "btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button></div>
+            </div>
+          <% end %> 
+      </div> 
+    </div>
+  </div> 
+</div>  
+</div>
+  </div>
+    </div>
+      <table class="table table-striped table-hover mt-0" >
+          <tr>
+            <th>Delivery Date</th>
+            <th>User_id</th>
+            <th>Requisition_Amount</th>
+            <th>Pr_Creation_date</th>
+            <th>Status</th>
+            <th style="padding-left: 40px;" >Action </th>
+          </tr>
+          <% @purchase_requests.each do |purchase_request| %> 
+              <tr>
+              <td><%=link_to purchase_request.delivery_date, user_purchase_request_path(current_user, purchase_request.id) %></td>
+              <td><%=link_to purchase_request.user_id,  user_purchase_request_path(current_user, purchase_request.id)%></td>
+              <td><%=link_to purchase_request.requisition_amount,  user_purchase_request_path(current_user, purchase_request.id)%></td>
+              <td><%=link_to purchase_request.pr_creation_date,  user_purchase_request_path(current_user, purchase_request.id)%></td>
+              <td><%=link_to purchase_request.status,  user_purchase_request_path(current_user, purchase_request.id)%></td>
+							<td>
+								<ul>
+                  <div class="d-flex flex-row bd-highlight mb-3 " >
+                    <%= link_to ('<i class="fa fa-eye fa-lg text-primary"></i>').html_safe, user_purchase_request_path(current_user, purchase_request.id), class:" mx-2"%>
+                    <%= link_to ('<i class="fa fa-pencil fa-lg text-primary"></i>').html_safe, edit_user_purchase_request_path(current_user, purchase_request.id), class:" mx-2"   %>
+                    <%= button_to "<i class='fa fa-trash fa-lg text-primary'></i>".html_safe, user_purchase_request_path(current_user, purchase_request.id),:method => :delete, class: "border-0", style: "background: none;"  %>
+                  </div>
+								</ul>
+							</td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
 
 
-<%= link_to "New PURCHASE REQUSET", new_purchase_request_path %>
+
+
+
+
+
+
