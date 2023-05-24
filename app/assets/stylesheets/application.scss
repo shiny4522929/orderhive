@@ -1,3 +1,6 @@
+/*
+ *= require toastr
+ */
  @import "bootstrap";
  @import "./style.scss";
  @import "./bootstrap-grid.scss";
@@ -22,6 +25,7 @@
  @import "./style.scss";
  @import "font-awesome";
  @import "./registration.scss";
+ @import "toastr";
  
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -34,7 +38,7 @@
  }
 
  body {
-   background: #00E5FF;
+   background: white;
    min-height: 100vh;
  }
 

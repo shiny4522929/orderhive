@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   mount Avo::Engine, at: Avo.configuration.root_path
   # authenticate :user, lambda { |u| u.role == "admin" } do
   # mount Avo::Engine => "/admin", :as => "avo"
@@ -17,5 +16,7 @@ Rails.application.routes.draw do
   root "homes#index"
   resources :locations
   resources :purchase_requests
+  resources :products
+  resources :category
 end
 
