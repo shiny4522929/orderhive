@@ -50,6 +50,7 @@ gem 'bootstrap'
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem "byebug"
+gem 'toastr_rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
